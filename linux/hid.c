@@ -663,7 +663,7 @@ hid_device * HID_API_EXPORT hid_open_path(const char *path)
 		memset(&rpt_desc, 0x0, sizeof(rpt_desc));
 
 		/* Set exclusive grab for HID device */
-		res = ioctl(dev->device_handle, EVIOCGRAB, &desc_size);
+		res = ioctl(dev->device_handle, EVIOCGRAB, 1);
 		if (res < 0)
 			register_device_error_format(dev, "ioctl (EVIOCGRAB): %s", strerror(errno));
 
